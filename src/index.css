@@ -5,10 +5,21 @@ body {
 }
 
 .ship {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   position: absolute;
   bottom: 0px;
   left: 46.5%;
   background-color: red;
+}
+
+.bullet-count{
+  color: blue;
+}
+
+.bullet{
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
 }
