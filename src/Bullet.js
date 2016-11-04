@@ -5,10 +5,9 @@ class Bullet extends Component {
     super(props);
   }
 
-
   render(){
     return (
-      <div className="bullet">
+      <div className={this.props.bulletClass}>
       </div>
     )
   }

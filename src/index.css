@@ -17,8 +17,19 @@ body {
   color: blue;
 }
 
-.bullet{
-  background-color: red;
+.stable-bullet{
+  position:absolute;
+  background-color: blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.moving-bullet{
+  -webkit-transition: position 2s ease, top 2s ease;
+  position: absolute;
+  top: -500px;
+  background-color: white;
   width: 20px;
   height: 20px;
   border-radius: 20px;
