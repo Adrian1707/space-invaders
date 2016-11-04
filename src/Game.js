@@ -3,12 +3,22 @@ import React, { Component } from 'react';
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.state = {'bullets': 10};
+    this.state = {'bullets': 4};
     this.handleClick = this.handleClick.bind(this);
+    this.reload = this.reload.bind(this);
   }
 
   shoot(){
-    return (this.setState({'bullets': this.state.bullets -1 }))
+    if(this.state.bullets === 0 ){
+      alert("YOU NEED TO RELOAD!")
+    }
+    else{
+      return (this.setState({'bullets': this.state.bullets -1 }))
+    }
+  }
+
+  reload(){
+    return this.setState({bullets': 5})
   }
 
   displayBullets(){
@@ -21,7 +31,13 @@ class Game extends Component {
 
   render(){
     return (
-    <div onClick={this.handleClick}> I am game{this.state.bullets}!</div>
+    <div>
+    <button onClick={this.handleClick}> SHOOT!</button>
+    <button onClick={this.reload}>RELOAD</button>
+     <h1 style={{color:'red'}}>
+      {this.state.bullets}
+     </h1>
+    </div>
     )
   }
 };
