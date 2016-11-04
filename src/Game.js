@@ -21,7 +21,7 @@ class Game extends Component {
 
   render(){
     return (
-    <div onClick={this.handleClick}>{this.displayBullets} I am game!</div>
+    <div onClick={this.handleClick}> I am game{this.state.bullets}!</div>
     )
   }
 };
