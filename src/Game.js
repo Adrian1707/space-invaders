@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SpaceShip from './SpaceShip.js'
 
 class Game extends Component {
   constructor(props) {
@@ -18,14 +19,14 @@ class Game extends Component {
   }
 
   reload(){
-    return this.setState({bullets': 5})
+    return this.setState({'bullets': 5})
   }
 
   displayBullets(){
     return (this.state.bullets)
   }
 
-  handleClick() {
+  handleClick(){
     this.shoot();
   }
 
@@ -34,9 +35,8 @@ class Game extends Component {
     <div>
     <button onClick={this.handleClick}> SHOOT!</button>
     <button onClick={this.reload}>RELOAD</button>
-     <h1 style={{color:'red'}}>
-      {this.state.bullets}
-     </h1>
+    <SpaceShip />
+    <h1 style={{color:'red'}}>{this.state.bullets}</h1>
     </div>
     )
   }
