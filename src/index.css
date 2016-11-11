@@ -21,7 +21,8 @@ body {
   left: 46.5%;
   background-color: green;
   opacity: 1;
-  animation: move 7s infinite;
+  animation: move 7s;
+  -webkit-animation-fill-mode:forwards
 }
 
 @keyframes move{
