@@ -1,41 +1,23 @@
 import React, { Component } from 'react';
 import SpaceShip from './SpaceShip.js'
+import Enemy from './Enemy.js'
 
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.state = {'bullets': 4};
-    this.handleClick = this.handleClick.bind(this);
-    this.reload = this.reload.bind(this);
+    this.state = {"enemyClass": "enemy-alive", "bulletClass": "stable-bullet"}
+    this.destroyEnemy = this.destroyEnemy.bind(this)
   }
 
-  shoot(){
-    if(this.state.bullets === 0 ){
-      alert("YOU NEED TO RELOAD!")
-    }
-    else{
-      return (this.setState({'bullets': this.state.bullets -1 }))
-    }
-  }
-
-  reload(){
-    return this.setState({'bullets': 5})
-  }
-
-  displayBullets(){
-    return (this.state.bullets)
-  }
-
-  handleClick(){
-    this.shoot();
+  destroyEnemy(){
+    this.setState({"enemyClass": "enemy-dead"})
   }
 
   render(){
     return (
     <div>
-    <button onClick={this.handleClick}> SHOOT!</button>
-    <button onClick={this.reload}>RELOAD</button>
-    <SpaceShip />
+      <SpaceShip bulletClass={this.state.bulletClass} destroyEnemy={this.destroyEnemy} />
+      <Enemy enemyClass={this.state.enemyClass}/>
     </div>
     )
   }
