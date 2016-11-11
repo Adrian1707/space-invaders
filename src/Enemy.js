@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import Bullet from './Bullet.js'
 
-class SpaceShip extends Component {
+class Enemy extends Component {
   constructor(props) {
     super(props);
     this.state = {"bulletClass": "stable-bullet"}
-    this.fire = this.fire.bind(this)
-  }
-
-  fire() {
-    this.setState({"bulletClass": "moving-bullet"})
-    setTimeout(() => {
-      this.setState({"bulletClass" : "stable-bullet"})
-    }, 502)
   }
 
   render(){

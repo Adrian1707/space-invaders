@@ -36,7 +36,6 @@ class Game extends Component {
     <button onClick={this.handleClick}> SHOOT!</button>
     <button onClick={this.reload}>RELOAD</button>
     <SpaceShip />
-    <h1 className="bullet-count">{this.state.bullets}</h1>
     </div>
     )
   }

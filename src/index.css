@@ -19,17 +19,18 @@ body {
 
 .stable-bullet{
   position:absolute;
-  background-color: blue;
+  background-color: black;
   width: 20px;
   height: 20px;
   border-radius: 20px;
+  top: 0px;
 }
 
 .moving-bullet{
-  -webkit-transition: position 2s ease, top 2s ease;
+  -webkit-transition: top 0.5s ease;
   position: absolute;
   top: -500px;
-  background-color: white;
+  background-color: black;
   width: 20px;
   height: 20px;
   border-radius: 20px;
