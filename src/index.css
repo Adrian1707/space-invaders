@@ -21,6 +21,15 @@ body {
   left: 46.5%;
   background-color: green;
   opacity: 1;
+  animation: move 7s infinite;
+}
+
+@keyframes move{
+  0% {top: 0px; }
+  25% {top: 200px;}
+  50% {top: 400px;}
+  75% {top: 600px;}
+  100% {top: 800px;}
 }
 
 .enemy-dead {
@@ -32,6 +41,7 @@ body {
   left: 46.5%;
   opacity: 0;
   background-color: orange;
+  transform: scale(2) rotate(5deg);
 }
 
 .bullet-count{
