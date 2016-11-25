@@ -10,6 +10,7 @@ class SpaceShip extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.moveLeft = this.moveLeft.bind(this)
     this.moveRight = this.moveRight.bind(this)
+    this.margin = 0
   }
 
   componentWillMount() {
@@ -26,12 +27,14 @@ class SpaceShip extends Component {
     }, 350)
   }
 
-  moveLeft(){
-    this.refs.ship1.style.marginLeft += "-5%"
+  moveRight(){
+    this.margin += 2
+    this.refs.ship1.style.marginLeft = this.margin + "%"
   }
 
-  moveRight(){
-    this.refs.ship1.style.marginLeft += "+5%"
+  moveLeft(){
+    this.margin -= 5
+    this.refs.ship1.style.marginRight = this.margin + "%"
   }
 
   handleKeyDown(e){
@@ -39,16 +42,16 @@ class SpaceShip extends Component {
       case 32:
         this.fire()
         break;
-      case 39:
-        this.moveRight()
       case 37:
         this.moveLeft()
+      case 39:
+        this.moveRight()
     }
   }
 
   render(){
     return (
-      <div onClick={this.fire} onKeyDown={this.handleKeyPress} className="ship" id="ship" ref="ship1">
+      <div onClick={this.fire} onKeyDown={this.handleKeyDown} className="ship" id="ship" ref="ship1">
         <Bullet bulletClass={this.state.bulletClass} />
       </div>
     )
