@@ -40,12 +40,14 @@ class SpaceShip extends Component {
   handleKeyDown(e){
     switch(e.keyCode){
       case 32:
-      return this.fire();
-       break;
+        return this.fire();
+        break;
       case 39:
-      return this.moveRight();
+        return this.moveRight();
+        break;
       case 37:
-      return this.moveLeft();
+        return this.moveLeft();
+        break;
     }
   }
 
