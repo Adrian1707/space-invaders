@@ -28,24 +28,24 @@ class SpaceShip extends Component {
   }
 
   moveRight(){
-    this.margin += 2
-    this.refs.ship1.style.marginLeft = this.margin + "%"
+    this.margin += 10
+    this.refs.ship1.style.marginLeft = this.margin + "px"
   }
 
   moveLeft(){
-    this.margin -= 5
-    this.refs.ship1.style.marginRight = this.margin + "%"
+    this.margin -= 10
+    this.refs.ship1.style.marginLeft = this.margin + "px"
   }
 
   handleKeyDown(e){
     switch(e.keyCode){
       case 32:
-        this.fire()
-        break;
-      case 37:
-        this.moveLeft()
+      return this.fire();
+       break;
       case 39:
-        this.moveRight()
+      return this.moveRight();
+      case 37:
+      return this.moveLeft();
     }
   }
 
