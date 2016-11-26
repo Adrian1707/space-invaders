@@ -61,7 +61,7 @@ body {
 .moving-bullet{
   -webkit-transition: top 0.5s ease;
   position: absolute;
-  top: -425px;
+  top: -700px;
   background-color: black;
   width: 20px;
   height: 20px;

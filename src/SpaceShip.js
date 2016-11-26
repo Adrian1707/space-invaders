@@ -25,7 +25,7 @@ class SpaceShip extends Component {
         clearInterval(timer)
         this.props.destroyEnemy()
       }
-      else if(this.getPosition("bullet").y < this.getPosition("enemy").y){
+      else if(this.bulletPosition().y < this.enemyPosition().y){
         clearInterval(timer)
       }
     }, 50)
@@ -33,20 +33,41 @@ class SpaceShip extends Component {
    setTimeout(() => {
       this.setState({"bulletClass" : "stable-bullet"})
       clearInterval(timer)
-    }, 502)
+    }, 800)
   }
 
   getPosition(enemyORBulletId){
     var enemyORBullet = document.getElementById(enemyORBulletId);
-    var x = enemyORBullet.getBoundingClientRect().left
+    var left = enemyORBullet.getBoundingClientRect().left
+    var right = enemyORBullet.getBoundingClientRect().right
     var width = enemyORBullet.getBoundingClientRect().width
     var height = enemyORBullet.getBoundingClientRect().height
-    var y = enemyORBullet.getBoundingClientRect().top
-    return {"x": x, "y": y, "width": width, "height": height}
+    var top = enemyORBullet.getBoundingClientRect().top
+    return {"left": left, "y": top, "width": width, "height": height, "right": right}
   }
 
   comparePosition(){
-    return this.getPosition("bullet").y < this.getPosition("enemy").y && this.getPosition("bullet").x === this.getPosition("enemy").x
+    return this.verticalPosition() && this.horizontalPosition()
+
+  }
+
+  verticalPosition(){
+    return this.bulletPosition().y < this.enemyPosition().y
+  }
+
+  horizontalPosition(){
+    return (this.enemyPosition().right - this.bulletPosition().right >= 0 &&
+          this.enemyPosition().right - this.bulletPosition().right <= 40) ||
+          (this.enemyPosition().left - this.bulletPosition().left >= -30 &&
+          this.enemyPosition().left - this.bulletPosition().left <= 10)
+  }
+
+  enemyPosition(){
+    return this.getPosition("enemy")
+  }
+
+  bulletPosition(){
+    return this.getPosition("bullet")
   }
 
   moveRight(){
@@ -62,13 +83,13 @@ class SpaceShip extends Component {
   handleKeyDown(e){
     switch(e.keyCode){
       case 32:
-        return this.fire();
+        this.fire();
         break;
       case 39:
-        return this.moveRight();
+        this.moveRight();
         break;
       case 37:
-        return this.moveLeft();
+        this.moveLeft();
         break;
     }
   }
