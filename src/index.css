@@ -27,10 +27,10 @@ body {
 
 @keyframes move{
   0% {top: 0px; }
-  25% {top: 200px;}
-  50% {top: 400px;}
-  75% {top: 600px;}
-  100% {top: 800px;}
+  25% {top: 150px;}
+  50% {top: 300px;}
+  75% {top: 450px;}
+  100% {top: 600px;}
 }
 
 .enemy-dead {

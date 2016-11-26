@@ -7,6 +7,7 @@ class SpaceShip extends Component {
     super(props);
     this.state = {"bulletClass": "stable-bullet"}
     this.fire = this.fire.bind(this)
+    this.comparePosition = this.comparePosition.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.moveLeft = this.moveLeft.bind(this)
     this.moveRight = this.moveRight.bind(this)
@@ -19,12 +20,33 @@ class SpaceShip extends Component {
 
   fire() {
     this.setState({"bulletClass": "moving-bullet"})
-    setTimeout(() => {
+    var timer = setInterval(() => {
+      if(this.comparePosition()) {
+        clearInterval(timer)
+        this.props.destroyEnemy()
+      }
+      else if(this.getPosition("bullet").y < this.getPosition("enemy").y){
+        clearInterval(timer)
+      }
+    }, 50)
+
+   setTimeout(() => {
       this.setState({"bulletClass" : "stable-bullet"})
+      clearInterval(timer)
     }, 502)
-    setTimeout(() => {
-      this.props.destroyEnemy()
-    }, 350)
+  }
+
+  getPosition(enemyORBulletId){
+    var enemyORBullet = document.getElementById(enemyORBulletId);
+    var x = enemyORBullet.getBoundingClientRect().left
+    var width = enemyORBullet.getBoundingClientRect().width
+    var height = enemyORBullet.getBoundingClientRect().height
+    var y = enemyORBullet.getBoundingClientRect().top
+    return {"x": x, "y": y, "width": width, "height": height}
+  }
+
+  comparePosition(){
+    return this.getPosition("bullet").y < this.getPosition("enemy").y && this.getPosition("bullet").x === this.getPosition("enemy").x
   }
 
   moveRight(){
@@ -53,7 +75,7 @@ class SpaceShip extends Component {
 
   render(){
     return (
-      <div onClick={this.fire} onKeyDown={this.handleKeyDown} className="ship" id="ship" ref="ship1">
+      <div onClick={this.fire}  onKeyDown={this.handleKeyDown} className="ship" id="ship" ref="ship1">
         <Bullet bulletClass={this.state.bulletClass} />
       </div>
     )
