@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Bullet from './Bullet.js'
+import MovingBullet from './MovingBullet.js'
 import {comparePosition, verticalPosition, getPosition } from './Position.js'
 
 class SpaceShip extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {"bulletClass": "stable-bullet"}
     this.fire = this.fire.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.moveLeft = this.moveLeft.bind(this)
@@ -19,14 +18,15 @@ class SpaceShip extends Component {
   }
 
   fire() {
-    this.props.changeMovingBulletState()
+    this.props.changeMovingBulletState();
     var timer = setInterval(() => {
       if(comparePosition()) {
         clearInterval(timer)
         this.props.destroyEnemy()
+        this.props.resetBulletState()
       }
       else if(verticalPosition() || this.bulletAtTop()){
-        this.setState({"bulletClass": "stable-bullet"})
+        this.props.resetBulletState()
         clearInterval(timer)
       }
     }, 50)
@@ -65,8 +65,7 @@ class SpaceShip extends Component {
 
   render(){
     return (
-      <div onClick={this.fire}  onKeyDown={this.handleKeyDown} className="ship" id="ship" ref="ship1">
-        <Bullet bulletClass={this.state.bulletClass} />
+      <div onKeyDown={this.handleKeyDown} className="ship" id="ship" ref="ship1">
       </div>
     )
   }
