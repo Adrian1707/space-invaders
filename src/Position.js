@@ -18,9 +18,9 @@ function getPosition(enemyORBulletId){
 
 function horizontalPosition(){
   return (enemyPosition().right - bulletPosition().right >= 0 &&
-        enemyPosition().right - bulletPosition().right <= 40) ||
-        (enemyPosition().left - bulletPosition().left >= -30 &&
-        enemyPosition().left - bulletPosition().left <= 10)
+        enemyPosition().right - bulletPosition().right <= enemyPosition().width) ||
+        (enemyPosition().left - bulletPosition().left >= bulletPosition().width - enemyPosition().width &&
+        enemyPosition().left - bulletPosition().left <= bulletPosition().width)
 }
 
 function enemyPosition(){
@@ -30,5 +30,3 @@ function enemyPosition(){
 function bulletPosition(){
   return getPosition("bullet")
 }
-
-
