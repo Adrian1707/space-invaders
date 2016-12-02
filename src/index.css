@@ -27,10 +27,10 @@ body {
 
 @keyframes move{
   0% {top: 0px; }
-  25% {top: 200px;}
-  50% {top: 400px;}
-  75% {top: 600px;}
-  100% {top: 800px;}
+  25% {top: 150px;}
+  50% {top: 300px;}
+  75% {top: 450px;}
+  100% {top: 600px;}
 }
 
 .enemy-dead {
@@ -58,12 +58,25 @@ body {
   top: 0px;
 }
 
-.moving-bullet{
-  -webkit-transition: top 0.5s ease;
-  position: absolute;
-  top: -425px;
-  background-color: black;
+.hiding-bullet{
+  text-align: center;
+  background-color: red;
   width: 20px;
   height: 20px;
   border-radius: 20px;
+  margin-right: 50%;
+  margin-left: 48%;
+  margin-top: 100%;
+}
+
+.moving-bullet{
+  position: absolute;
+  -webkit-transition: all 0.5s ease-in;
+  background-color: red;
+  top: -85%;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin-right: 52%;
+  margin-left: 48%;
 }
