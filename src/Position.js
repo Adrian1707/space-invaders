@@ -6,7 +6,7 @@ export function verticalPosition(){
   return bulletPosition().y < enemyPosition().y
 }
 
-function getPosition(enemyORBulletId){
+export function getPosition(enemyORBulletId){
   var enemyORBullet = document.getElementById(enemyORBulletId);
   var left = enemyORBullet.getBoundingClientRect().left
   var right = enemyORBullet.getBoundingClientRect().right

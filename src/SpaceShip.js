@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Bullet from './Bullet.js'
-import {comparePosition, verticalPosition } from './Position.js'
+import {comparePosition, verticalPosition, getPosition } from './Position.js'
 
 class SpaceShip extends Component {
 
@@ -19,21 +19,24 @@ class SpaceShip extends Component {
   }
 
   fire() {
-    this.setState({"bulletClass": "moving-bullet"})
+    this.props.changeMovingBulletState()
     var timer = setInterval(() => {
       if(comparePosition()) {
         clearInterval(timer)
         this.props.destroyEnemy()
       }
-      else if(verticalPosition()){
+      else if(verticalPosition() || this.bulletAtTop()){
+        this.setState({"bulletClass": "stable-bullet"})
         clearInterval(timer)
       }
     }, 50)
 
-   setTimeout(() => {
-      this.setState({"bulletClass" : "stable-bullet"})
-      clearInterval(timer)
-    }, 800)
+  }
+
+  bulletAtTop(){
+    var bulletPosition = getPosition("bullet")
+    var topWindowPosition = document.body.scrollTop
+    bulletPosition.top == topWindowPosition
   }
 
   moveRight(){
